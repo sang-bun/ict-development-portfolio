@@ -1,0 +1,34 @@
+{
+  "status": "completed",
+  "started_at": "2026-10-02T13:55:37.771160+09:00",
+  "model": "Linear_log10",
+  "features": [
+    "delta_q_log_var"
+  ],
+  "target": "cycle_life_model",
+  "target_transform": "log10; predictions returned in cycles",
+  "selection_basis": "기존 그룹 CV의 MAPE·RMSE와 모델의 단순성",
+  "snapshot_dir": "data/processed/features_20261002_125401_694125",
+  "split_dir": "outputs/modeling/group_split_20261002_132656_557254",
+  "split_manifest_sha256": "3c88ae4301d20a1cc478432e49109f6f02de95c047b6330dbff6ba726ad0a1f4",
+  "n_train": 31,
+  "n_holdout": 10,
+  "original_split_seed": 42,
+  "holdout_evaluated": true,
+  "batch2_test_evaluated": false,
+  "python_version": "3.11.15 (main, Mar  3 2026, 00:52:57) [Clang 21.0.0 (clang-2100.0.123.102)]",
+  "numpy_version": "2.4.6",
+  "pandas_version": "3.0.6",
+  "sklearn_version": "1.9.1",
+  "matplotlib_version": "3.11.2",
+  "finished_at": "2026-10-02T13:55:37.931549+09:00",
+  "elapsed_seconds": 0.1594848750391975,
+  "MAPE_gap_holdout_minus_cv_pp": -1.0317495998774096,
+  "log10_target_coefficient": -0.3441689249113039,
+  "log10_target_intercept": 1.5821674135989132,
+  "output_sha256": {
+    "holdout_metrics.csv": "02fc75db5f103fbf253f03f45392de17d34cc4c59eb62d0f260d326c73964519",
+    "holdout_predictions.csv": "8759d249e7ff54fe5a14a965ca586303e0add3f8bcf49c02df030b7c3986b1d3",
+    "holdout_actual_vs_predicted.png": "a3185585c993f62c8298b5aa9faeaea45289e53d651f9e652996c9020366a147"
+  }
+}

@@ -1,0 +1,14 @@
+﻿feature,definition,unit
+qd_10,10사이클의 방전 용량,Ah
+qd_change_100_10,100사이클 Qd - 10사이클 Qd,Ah
+ir_median,10~100사이클 내부저항 중앙값,Ω
+tavg_median,10~100사이클 평균온도 중앙값,°C
+tmax_median,10~100사이클 최대온도 중앙값,°C
+chargetime_median,10~100사이클 충전시간 중앙값,min
+early_fade_rate,10~100사이클 Qd의 Theil–Sen 기울기 × -1000,mAh/cycle
+delta_q_mean,ΔQ(V) = Q100(V) - Q10(V)의 평균,Ah
+delta_q_min,ΔQ(V)의 최솟값,Ah
+delta_q_log_var,"ΔQ(V) 분산의 log10, ddof=0, Q 단위 Ah",로그값
+charge_c1,1단계 충전 설정 C-rate,C
+charge_c2,2단계 충전 설정 C-rate,C
+switch_soc,1단계에서 2단계로 전환하는 설정 SOC,%

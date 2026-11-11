@@ -1,0 +1,43 @@
+{
+  "received_at": "2026-10-01",
+  "source": "User supplied local files",
+  "records": [
+    {
+      "id": "2017-05-12",
+      "source": "data/raw/2017-05-12_batchdata_updated_struct_errorcorrect.mat.zip",
+      "archive": "data/raw/battery-cycle-life/2017-05-12_batchdata_updated_struct_errorcorrect.mat.zip",
+      "archive_bytes": 1772156153,
+      "archive_sha256": "3dba4da068e1cf675f91a4ebcadebcb9a66d56189a348d531407c34647dca4fa",
+      "mat": "data/raw/battery-cycle-life/2017-05-12_batchdata_updated_struct_errorcorrect.mat",
+      "mat_bytes": 3025320241,
+      "mat_sha256": "9d928ab978f0e3c70b31cb833a749fedd35094d01af76475d69b40aa3497f5ba",
+      "zip_crc32_verified": true,
+      "mat_header": "MATLAB 7.3 MAT-file, Platform: MACI64, Created on: Wed Dec 12 14:05:35 2018 HDF5 schema 1.00 .                      \u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0002IM"
+    },
+    {
+      "id": "2018-02-20",
+      "source": "data/raw/2018-02-20_batchdata_updated_struct_errorcorrect.mat.zip",
+      "archive": "data/raw/battery-cycle-life/2018-02-20_batchdata_updated_struct_errorcorrect.mat.zip",
+      "archive_bytes": 1377895420,
+      "archive_sha256": "b68ae3b236c9130fe3158bc7c6bc34ec8f0feebe8a12487e3120c8cf7c3407b6",
+      "mat": "data/raw/battery-cycle-life/2018-02-20_batchdata_updated_struct_errorcorrect.mat",
+      "mat_bytes": 2022599329,
+      "mat_sha256": "3487db505ad08b6c805f41dd0560e73b54077c76aca04f706f06e2356ccf7845",
+      "zip_crc32_verified": true,
+      "mat_header": "MATLAB 7.3 MAT-file, Platform: PCWIN64, Created on: Fri May 04 02:29:10 2018 HDF5 schema 1.00 .                     \u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0002IM"
+    },
+    {
+      "id": "2018-04-12",
+      "source": "data/raw/2018-04-12_batchdata_updated_struct_errorcorrect.mat.zip",
+      "archive": "data/raw/battery-cycle-life/2018-04-12_batchdata_updated_struct_errorcorrect.mat.zip",
+      "archive_bytes": 2202489496,
+      "archive_sha256": "2660592bc6f3297ebaa1877ae4442a8bb26b4c809c7814855859abd35b41cf2e",
+      "mat": "data/raw/battery-cycle-life/2018-04-12_batchdata_updated_struct_errorcorrect.mat",
+      "mat_bytes": 3236690412,
+      "mat_sha256": "62c30e413b63e6144720e016deed3661fac8468641794a5807b123fe84717998",
+      "zip_crc32_verified": true,
+      "mat_header": "MATLAB 7.3 MAT-file, Platform: PCWIN64, Created on: Mon Jun 18 15:20:48 2018 HDF5 schema 1.00 .                     \u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0002IM"
+    }
+  ],
+  "downloads_originals_preserved": true
+}

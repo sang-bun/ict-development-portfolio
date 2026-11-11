@@ -1,0 +1,26 @@
+{
+  "saved_at": "2026-10-02T13:36:38.600324+09:00",
+  "split_directory": "outputs/modeling/group_split_20261002_132656_557254",
+  "split_manifest_sha256": "3c88ae4301d20a1cc478432e49109f6f02de95c047b6330dbff6ba726ad0a1f4",
+  "input_snapshot": "data/processed/features_20261002_125401_694125",
+  "features": [
+    "delta_q_log_var"
+  ],
+  "target": "cycle_life_model",
+  "n_training_cells": 31,
+  "n_cv_folds": 5,
+  "models": {
+    "Dummy_median": "각 CV 학습 부분의 원래 수명 중앙값",
+    "Linear_raw": "단일 피처 선형 회귀, 원래 수명 학습",
+    "Linear_log10": "단일 피처 선형 회귀, log10 수명 학습 후 10**예측 역변환"
+  },
+  "primary_metric": "폴드별 MAPE(%)의 단순평균",
+  "secondary_metric": "폴드별 RMSE(사이클)의 단순평균",
+  "std_definition": "폴드별 지표의 표본표준편차, ddof=1",
+  "holdout_evaluated": false,
+  "batch2_evaluated": false,
+  "python_version": "3.11.15 (main, Mar  3 2026, 00:52:57) [Clang 21.0.0 (clang-2100.0.123.102)]",
+  "numpy_version": "2.4.6",
+  "pandas_version": "3.0.6",
+  "sklearn_version": "1.9.1"
+}

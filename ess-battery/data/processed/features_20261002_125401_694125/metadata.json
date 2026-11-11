@@ -1,0 +1,139 @@
+{
+  "saved_at": "2026-10-02T12:54:01.694125+09:00",
+  "feature_cols": [
+    "qd_10",
+    "qd_change_100_10",
+    "ir_median",
+    "tavg_median",
+    "tmax_median",
+    "chargetime_median",
+    "early_fade_rate",
+    "delta_q_mean",
+    "delta_q_min",
+    "delta_q_log_var",
+    "charge_c1",
+    "charge_c2",
+    "switch_soc"
+  ],
+  "target_col": "cycle_life_model",
+  "observation_horizon": 100,
+  "feature_selection_status": "후보 추출 완료, 최종 선택 전",
+  "batch_roles": {
+    "Batch 1": "학습·내부 CV·hold-out 검증",
+    "Batch 2": "최종 test"
+  },
+  "batch1_internal_split": "미실시",
+  "fitted_preprocessing": false,
+  "model_training": false,
+  "randomness_used_in_this_export": false,
+  "fresh_kernel_execution": "미확인",
+  "model_cells_by_batch": {
+    "Batch 1": 41,
+    "Batch 2": 39
+  },
+  "python_version": "3.11.15 (main, Mar  3 2026, 00:52:57) [Clang 21.0.0 (clang-2100.0.123.102)]",
+  "platform": "darwin",
+  "library_versions": {
+    "numpy": "2.4.6",
+    "pandas": "3.0.6",
+    "scipy": "1.17.1",
+    "h5py": "3.16.0",
+    "matplotlib": "3.11.2"
+  },
+  "input_paths": {
+    "Batch 1": "data/raw/2017-05-12_batchdata_updated_struct_errorcorrect.mat",
+    "Batch 2": "data/raw/2018-02-20_batchdata_updated_struct_errorcorrect.mat"
+  },
+  "previous_input_manifest": [
+    {
+      "id": "2017-05-12",
+      "source": "data/raw/2017-05-12_batchdata_updated_struct_errorcorrect.mat.zip",
+      "archive": "data/raw/battery-cycle-life/2017-05-12_batchdata_updated_struct_errorcorrect.mat.zip",
+      "archive_bytes": 1772156153,
+      "archive_sha256": "3dba4da068e1cf675f91a4ebcadebcb9a66d56189a348d531407c34647dca4fa",
+      "mat": "data/raw/battery-cycle-life/2017-05-12_batchdata_updated_struct_errorcorrect.mat",
+      "mat_bytes": 3025320241,
+      "mat_sha256": "9d928ab978f0e3c70b31cb833a749fedd35094d01af76475d69b40aa3497f5ba",
+      "zip_crc32_verified": true,
+      "mat_header": "MATLAB 7.3 MAT-file, Platform: MACI64, Created on: Wed Dec 12 14:05:35 2018 HDF5 schema 1.00 .                      \u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0002IM"
+    },
+    {
+      "id": "2018-02-20",
+      "source": "data/raw/2018-02-20_batchdata_updated_struct_errorcorrect.mat.zip",
+      "archive": "data/raw/battery-cycle-life/2018-02-20_batchdata_updated_struct_errorcorrect.mat.zip",
+      "archive_bytes": 1377895420,
+      "archive_sha256": "b68ae3b236c9130fe3158bc7c6bc34ec8f0feebe8a12487e3120c8cf7c3407b6",
+      "mat": "data/raw/battery-cycle-life/2018-02-20_batchdata_updated_struct_errorcorrect.mat",
+      "mat_bytes": 2022599329,
+      "mat_sha256": "3487db505ad08b6c805f41dd0560e73b54077c76aca04f706f06e2356ccf7845",
+      "zip_crc32_verified": true,
+      "mat_header": "MATLAB 7.3 MAT-file, Platform: PCWIN64, Created on: Fri May 04 02:29:10 2018 HDF5 schema 1.00 .                     \u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0002IM"
+    }
+  ],
+  "input_hash_note": "기존 manifest 기록 재사용. 이번 저장 시 MAT 재해시는 미실시.",
+  "output_files": {
+    "model_candidates.csv": {
+      "rows": 80,
+      "columns": [
+        "batch",
+        "cell_id",
+        "barcode",
+        "protocol",
+        "protocol_note",
+        "cycle_life_model",
+        "qd_10",
+        "qd_change_100_10",
+        "ir_median",
+        "tavg_median",
+        "tmax_median",
+        "chargetime_median",
+        "early_fade_rate",
+        "delta_q_mean",
+        "delta_q_min",
+        "delta_q_log_var",
+        "charge_c1",
+        "charge_c2",
+        "switch_soc"
+      ],
+      "sha256": "d7c7ceabd0b40b0bb8b4af5be1d07b003e7b6559862f43b6c409c3c49b61e8bc"
+    },
+    "label_audit.csv": {
+      "rows": 93,
+      "columns": [
+        "batch",
+        "cell_id",
+        "barcode",
+        "protocol",
+        "protocol_note",
+        "cycle_life",
+        "qd_10",
+        "qd_change_100_10",
+        "ir_median",
+        "tavg_median",
+        "tmax_median",
+        "chargetime_median",
+        "early_fade_rate",
+        "delta_q_mean",
+        "delta_q_min",
+        "delta_q_log_var",
+        "charge_c1",
+        "charge_c2",
+        "switch_soc",
+        "cycle_life_model",
+        "label_status",
+        "label_source",
+        "eligible_for_regression"
+      ],
+      "sha256": "07c6b7bde6119b8b799baae37884760e8b73e168a2f73354187bb8b232b610bd"
+    },
+    "feature_dictionary.csv": {
+      "rows": 13,
+      "columns": [
+        "feature",
+        "definition",
+        "unit"
+      ],
+      "sha256": "b0c29bd6d025560fa93d3db5baf125378ed48d93b6246bca44bb92d434266684"
+    }
+  }
+}

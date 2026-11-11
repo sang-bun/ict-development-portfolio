@@ -1,0 +1,18 @@
+# Local runtime artifacts are not submission materials.
+.DS_Store
+**/.DS_Store
+**/.env
+**/.env.local
+**/.env.*.local
+**/.venv/
+**/venv/
+**/__pycache__/
+**/.pytest_cache/
+**/.ipynb_checkpoints/
+**/node_modules/
+**/.gradle/
+**/build/
+**/dist/
+**/.run/
+**/.vscode/
+**/.idea/

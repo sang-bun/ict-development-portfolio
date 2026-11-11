@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-10-02T14:37:35.159129+09:00",
+  "source_predictions": "outputs/modeling/group_split_20261002_132656_557254/final_test_20261002_140941_363275/test_predictions.csv",
+  "source_predictions_sha256": "1b52e61deb155d8870c19a4814f45ee667cf268e0624f0bc5d1d47a1bb8e2141",
+  "final_config": "outputs/modeling/group_split_20261002_132656_557254/final_test_20261002_140941_363275/final_config.json",
+  "group_definitions": {
+    "Short": "y_true < 500",
+    "Middle": "500 <= y_true <= 1000",
+    "Long": "y_true > 1000"
+  },
+  "model_refitted": false,
+  "new_predictions_generated": false
+}

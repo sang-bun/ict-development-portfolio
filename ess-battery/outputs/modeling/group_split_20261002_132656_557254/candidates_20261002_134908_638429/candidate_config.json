@@ -1,0 +1,81 @@
+{
+  "status": "completed",
+  "started_at": "2026-10-02T13:49:08.638429+09:00",
+  "snapshot_dir": "data/processed/features_20261002_125401_694125",
+  "split_dir": "outputs/modeling/group_split_20261002_132656_557254",
+  "split_manifest_sha256": "3c88ae4301d20a1cc478432e49109f6f02de95c047b6330dbff6ba726ad0a1f4",
+  "feature_sets": {
+    "dq_only": [
+      "delta_q_log_var"
+    ],
+    "measurement": [
+      "delta_q_log_var",
+      "qd_change_100_10",
+      "tavg_median",
+      "chargetime_median",
+      "ir_median"
+    ],
+    "plus_charge": [
+      "delta_q_log_var",
+      "qd_change_100_10",
+      "tavg_median",
+      "chargetime_median",
+      "ir_median",
+      "charge_c1",
+      "charge_c2",
+      "switch_soc"
+    ]
+  },
+  "target": "cycle_life_model",
+  "target_transform": "log10; predictions returned in cycles",
+  "estimators": {
+    "Ridge_log10": "Ridge(solver='svd')",
+    "ElasticNet_log10": "ElasticNet(max_iter=100000, tol=1e-06)"
+  },
+  "param_grids": {
+    "Ridge_log10": {
+      "regressor__model__alpha": [
+        0.01,
+        0.1,
+        1.0,
+        10.0,
+        100.0
+      ]
+    },
+    "ElasticNet_log10": {
+      "regressor__model__alpha": [
+        0.0001,
+        0.001,
+        0.01,
+        0.1
+      ],
+      "regressor__model__l1_ratio": [
+        0.1,
+        0.5,
+        0.9
+      ]
+    }
+  },
+  "outer_folds": 5,
+  "inner_folds": 3,
+  "group_column": "protocol",
+  "group_cv_shuffle": false,
+  "original_split_seed": 42,
+  "selection_scoring": "neg_mean_absolute_percentage_error",
+  "aggregation": "unweighted fold mean; sample std (ddof=1)",
+  "holdout_evaluated": false,
+  "batch2_test_evaluated": false,
+  "python_version": "3.11.15 (main, Mar  3 2026, 00:52:57) [Clang 21.0.0 (clang-2100.0.123.102)]",
+  "numpy_version": "2.4.6",
+  "pandas_version": "3.0.6",
+  "sklearn_version": "1.9.1",
+  "finished_at": "2026-10-02T13:49:10.587238+09:00",
+  "elapsed_seconds": 1.9473702919203788,
+  "output_sha256": {
+    "candidate_cv_metrics.csv": "b7570df693246fdad9991b8dae4ab6d925beb51ecf8d000903993ce289f6b8b4",
+    "candidate_cv_summary.csv": "7acd5d86b9804b74d7516f4888d6a2f540c787cd4db0d32517e7b40afe1b8fd1",
+    "candidate_oof_predictions.csv": "677737214f3b1fa32f85594270f03aa32df1067eded7f3ffe82d36cf55cce844",
+    "inner_cv_manifest.csv": "cca5a24d97f540b3c5e06a5652b5be970a849d2b69fae64ff40dc9f7c6b65c09",
+    "model_comparison.csv": "7f74c2c4ff334d537576c12f6166c6bef6e52347462f8314a24a4993b5c9c509"
+  }
+}

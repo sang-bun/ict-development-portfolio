@@ -1,0 +1,39 @@
+{
+  "status": "evaluation_completed",
+  "started_at": "2026-10-02T14:09:41.363275+09:00",
+  "model": "Linear_log10",
+  "features": [
+    "delta_q_log_var"
+  ],
+  "target": "cycle_life_model",
+  "target_transform": "log10",
+  "inverse_transform": "10**z",
+  "n_final_train": 41,
+  "n_test": 39,
+  "snapshot_dir": "data/processed/features_20261002_125401_694125",
+  "snapshot_csv_sha256": "d7c7ceabd0b40b0bb8b4af5be1d07b003e7b6559862f43b6c409c3c49b61e8bc",
+  "split_dir": "outputs/modeling/group_split_20261002_132656_557254",
+  "split_manifest_sha256": "3c88ae4301d20a1cc478432e49109f6f02de95c047b6330dbff6ba726ad0a1f4",
+  "holdout_result_dir": "outputs/modeling/group_split_20261002_132656_557254/holdout_20261002_135537_771160",
+  "original_split_seed": 42,
+  "reference_MAPE_pct": 9.1,
+  "reference_note": "과제의 논문 참고 수치; 동일 조건의 재현 비교 아님",
+  "prior_batch2_EDA": true,
+  "batch2_evaluated": true,
+  "python_version": "3.11.15 (main, Mar  3 2026, 00:52:57) [Clang 21.0.0 (clang-2100.0.123.102)]",
+  "numpy_version": "2.4.6",
+  "pandas_version": "3.0.6",
+  "sklearn_version": "1.9.1",
+  "joblib_version": "1.6.0",
+  "matplotlib_version": "3.11.2",
+  "finished_at": "2026-10-02T14:09:41.387304+09:00",
+  "elapsed_seconds": 0.020129875047132373,
+  "log10_target_coefficient": -0.3536931609192077,
+  "log10_target_intercept": 1.5523600107425775,
+  "output_sha256": {
+    "final_metrics.csv": "8c39fc4bdc1b105e0face451f7af3698b6d5dce1e2595d3938f026bd8973a75a",
+    "final_gaps.csv": "d29c940f7461a50eed62be58a935d119fec917b8d841be6e2cb2eb407bb9efcf",
+    "test_predictions.csv": "1b52e61deb155d8870c19a4814f45ee667cf268e0624f0bc5d1d47a1bb8e2141",
+    "final_model_bundle.joblib": "060235e47654e659d2fefafa974f11a99379d2ab044257d75257329fdcd74711"
+  }
+}

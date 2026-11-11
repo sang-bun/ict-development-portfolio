@@ -1,0 +1,4 @@
+﻿comparison,MAPE_gap_pp
+Valid - CV,-1.0317495998774096
+Test - Valid,17.028923589682712
+Test - reference 9.1%,17.074984973200465

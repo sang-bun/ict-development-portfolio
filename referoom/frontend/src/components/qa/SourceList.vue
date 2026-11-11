@@ -1,0 +1,187 @@
+<script setup>
+import { nextTick, ref, useId, watch } from 'vue'
+import { RouterLink } from 'vue-router'
+import { safeUrl, toneOfLabel } from '@/lib/format'
+import Icon from '@/components/common/Icon.vue'
+import { usePdfOpener } from '@/composables/usePdfOpener'
+
+// 답변 아래 회청색 근거 상자. 본문의 출처 알약을 누르면 같은 색 줄로 옮겨 가 강조한다.
+const props = defineProps({
+  items: { type: Array, default: () => [] }, // source_details: { label, paper_id, title, page, url, snippet }
+  fallback: { type: Array, default: () => [] }, // sources: "논문명 p.N" 문자열(상세가 없을 때만)
+  active: { type: Object, default: null }, // { label, n } 본문에서 누른 근거
+  needsReview: { type: Boolean, default: false }, // 수식·수치가 있거나 근거가 약한 답: 제목 아래에 확인 안내 한 줄
+})
+
+const uid = useId()
+const current = ref(null)
+const pdf = usePdfOpener()
+
+watch(
+  () => props.active,
+  async (a) => {
+    if (!a) return
+    current.value = a.label
+    await nextTick()
+    const el = document.getElementById(`${uid}-${a.label}`)
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    el?.scrollIntoView({ block: 'nearest', behavior: reduce ? 'auto' : 'smooth' })
+    el?.focus({ preventScroll: true })
+  },
+)
+</script>
+
+<template>
+  <section class="callout info" :aria-labelledby="`${uid}-title`">
+    <Icon name="forward" />
+    <div>
+      <h3 :id="`${uid}-title`" class="section-label">근거 {{ items.length || fallback.length }}건</h3>
+      <p v-if="needsReview" class="review-hint">수치·수식은 원문과 한 번 확인해 보세요.</p>
+      <ol v-if="items.length" class="list">
+        <li v-for="s in items" :id="`${uid}-${s.label}`" :key="s.label" tabindex="-1" :class="{ on: current === s.label }">
+          <span class="ref" :data-tone="toneOfLabel(s.label)">{{ s.label }}</span>
+          <div class="body">
+            <p class="where">
+              <RouterLink v-if="s.paper_id" :to="{ name: 'paper', params: { id: s.paper_id }, query: s.page ? { page: s.page } : {} }">{{ s.title }}</RouterLink>
+              <a v-else-if="safeUrl(s.url)" :href="safeUrl(s.url)" target="_blank" rel="noopener noreferrer">{{ s.title }}</a>
+              <span v-else>{{ s.title }}</span>
+              <span v-if="s.page" class="page tabular">{{ s.page }}쪽</span>
+              <!-- 팀이 보관한 원본 PDF를 새 탭에서 그 쪽으로 연다. paper_id가 없는 근거(웹 주소만 있는 것)에는 두지 않는다 -->
+              <button
+                v-if="s.paper_id"
+                type="button"
+                class="open-pdf"
+                :disabled="pdf.opening.value.has(s.label)"
+                :aria-label="`근거 ${s.label} 원문${s.page ? ` ${s.page}쪽` : ''} 보기`"
+                @click="pdf.open(s.label, s.paper_id, s.page)"
+              >{{ pdf.opening.value.has(s.label) ? '여는 중…' : s.page ? `원문 ${s.page}쪽 보기` : '원문 보기' }}</button>
+            </p>
+            <p v-if="s.snippet" class="quote">{{ s.snippet }}</p>
+          </div>
+        </li>
+      </ol>
+      <ul v-else class="plain">
+        <li v-for="s in fallback" :key="s">{{ s }}</li>
+      </ul>
+    </div>
+  </section>
+</template>
+
+<style scoped>
+.review-hint {
+  margin: 2px 0 0;
+  color: var(--c-ink-muted);
+  font-size: var(--fs-xs);
+}
+
+.list {
+  margin: 8px 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 2px;
+}
+
+li {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 10px;
+  padding: 8px;
+  margin: 0 -8px;
+  border-radius: var(--radius-m);
+  transition: background-color 0.4s ease;
+}
+
+li:focus {
+  outline: none;
+}
+
+/* 본문 출처를 누르면 그 줄을 피그마 선택 상자처럼 파란 테두리와 모서리 손잡이로 표시 */
+li {
+  position: relative;
+}
+
+li.on {
+  background: var(--c-glass-strong);
+  box-shadow: inset 0 0 0 1.5px var(--c-accent-2);
+  border-radius: 2px;
+}
+
+li.on::before,
+li.on::after {
+  content: "";
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border: 1.5px solid var(--c-accent-2);
+  background: var(--c-paper);
+}
+
+li.on::before {
+  top: -3px;
+  left: -3px;
+}
+
+li.on::after {
+  right: -3px;
+  bottom: -3px;
+}
+
+.ref {
+  align-self: start;
+}
+
+.where {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 10px;
+}
+
+.where a,
+.where span:first-child {
+  color: var(--c-ink);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.where a:hover {
+  text-decoration: underline;
+}
+
+.page {
+  color: var(--c-ink-muted);
+  font-size: var(--fs-xs);
+}
+
+.open-pdf {
+  padding: 2px 10px;
+  border: 1px solid var(--c-rule-strong);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--c-ink);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.open-pdf:hover:not(:disabled) {
+  background: var(--c-surface);
+}
+
+.open-pdf:disabled {
+  opacity: 0.55;
+  cursor: progress;
+}
+
+.quote {
+  margin-top: 3px;
+  color: var(--c-ink-muted);
+  line-height: 1.55;
+}
+
+.plain {
+  margin: 8px 0 0;
+  padding-left: 1.2em;
+}
+</style>

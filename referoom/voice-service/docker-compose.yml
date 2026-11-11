@@ -1,0 +1,26 @@
+# Voice-only helper. Run from repository root with -f voice-service/docker-compose.yml.
+# Supply real values at runtime; missing JWT_SECRET is rejected by common-py at startup.
+services:
+  app:
+    build:
+      context: ..
+      dockerfile: voice-service/Dockerfile
+    ports:
+      - "8008:8008"
+    environment:
+      JWT_SECRET: ${JWT_SECRET:-}
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      CORS_ALLOWED_ORIGINS: ${CORS_ALLOWED_ORIGINS:-http://localhost:5174,http://localhost:8008}
+      WHISPER_MODEL: ${WHISPER_MODEL:-small}
+      TTS_MODEL: ${TTS_MODEL:-tts-1}
+      TTS_VOICE: ${TTS_VOICE:-nova}
+      RAG_URL: ${RAG_URL:-http://host.docker.internal:8001}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - voice-data:/app/voice-service/data
+      - whisper-cache:/home/app/.cache/huggingface
+
+volumes:
+  voice-data:
+  whisper-cache:

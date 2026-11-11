@@ -1,0 +1,23 @@
+# Python 가상환경 및 자동 생성 캐시
+.venv/
+.venv-*/
+venv/
+__pycache__/
+*.py[cod]
+
+# Jupyter 자동 저장본
+.ipynb_checkpoints/
+
+# 운영체제 임시 파일
+.DS_Store
+Thumbs.db
+
+# 개인 환경 변수
+.env
+.env.*
+!.env.example
+
+# 대용량 원본 데이터: data/README.md에 따라 별도 준비
+/data/raw/
+
+# notebooks/, data/processed/, results/, outputs/, reports/는 제출에 포함

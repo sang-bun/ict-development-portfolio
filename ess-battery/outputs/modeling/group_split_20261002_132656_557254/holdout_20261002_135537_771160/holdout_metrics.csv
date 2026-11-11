@@ -1,0 +1,3 @@
+﻿evaluation,n_cells,MAPE_pct,RMSE_cycles
+Batch 1 CV: 5-fold mean,31,10.177810983395164,117.86361655584707
+Batch 1 hold-out,10,9.146061383517754,212.01499661400365
