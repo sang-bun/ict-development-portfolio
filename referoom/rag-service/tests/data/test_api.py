@@ -52,7 +52,8 @@ def api(tmp_path, monkeypatch):
     monkeypatch.setattr(config_rag, "LOCAL_INDEX_DIR", tmp_path)
     monkeypatch.setattr(config_rag, "STORE_BACKEND", "local")
     monkeypatch.setattr(config_rag, "ZOTERO_TEAM_ID", TEAM)
-    monkeypatch.setattr(config_rag, "ZOTERO_GROUP_ID", 6731353)
+    # FakeZotero 전용 예시 식별자. 실제 외부 그룹을 가리키지 않는다.
+    monkeypatch.setattr(config_rag, "ZOTERO_GROUP_ID", 1)
     monkeypatch.setattr(config_rag, "ZOTERO_API_KEY", "test-key")
     monkeypatch.setattr(config_rag, "TOPIC_MIN_RELEVANCE", 0.45)
 
@@ -322,7 +323,7 @@ def test_zotero_config_and_sync(api):
     seed(api)
     denied = api.client.get("/zotero/config", headers=MEMBER)
     assert (denied.status_code, denied.json()["code"]) == (403, "FORBIDDEN")
-    assert api.client.get("/zotero/config", headers=ADMIN).json() == {"configured": True, "group_id": 6731353, "last_synced_at": None}
+    assert api.client.get("/zotero/config", headers=ADMIN).json() == {"configured": True, "group_id": 1, "last_synced_at": None}
     assert api.client.get("/zotero/config", headers=OTHER_TEAM_ADMIN).json() == {"configured": False, "group_id": None, "last_synced_at": None}
     assert api.client.post("/zotero/sync", headers=MEMBER).status_code == 403
     unconfigured = api.client.post("/zotero/sync", headers=OTHER_TEAM_ADMIN)

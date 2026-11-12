@@ -3,7 +3,7 @@ import pytest
 from app.rag import config_rag
 
 
-@pytest.mark.parametrize("raw, expected", [("6731353", 6731353), ("  42 ", 42), ("", None), ("abc", None), ("-5", None), ("0", None), (None, None)])
+@pytest.mark.parametrize("raw, expected", [("1", 1), ("  42 ", 42), ("", None), ("abc", None), ("-5", None), ("0", None), (None, None)])
 def test_optional_int(monkeypatch, raw, expected):
     if raw is None:
         monkeypatch.delenv("ZOTERO_TEST_VALUE", raising=False)

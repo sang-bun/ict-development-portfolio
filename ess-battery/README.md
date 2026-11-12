@@ -209,9 +209,21 @@ RMSE는 CV 폴드 평균 117.864, hold-out 212.015, Test 170.525사이클이었�
 
 최종 표는 [model_performance.csv](results/model_performance.csv)에 저장했다.
 
+### 내부 검증의 실제값과 예측값
+
+아래는 당시 저장한 Batch 1 hold-out 10셀의 결과다. 점선에 가까울수록 실제 수명과 예측 수명이 일치한다. 평균 MAPE만 보면 드러나지 않는 장수명 셀의 오차도 함께 확인했다. 이번 문서 정리에서 새로 학습하거나 다시 평가한 결과가 아니다.
+
+![Batch 1 hold-out 10셀의 실제 수명과 예측 수명](outputs/modeling/group_split_20261002_132656_557254/holdout_20261002_135537_771160/holdout_actual_vs_predicted.png)
+
+[그림의 셀별 예측값](outputs/modeling/group_split_20261002_132656_557254/holdout_20261002_135537_771160/holdout_predictions.csv)
+
 ## 오류 분석
 
 Batch 2에서는 **39셀 중 38셀(97.4%)의 수명을 과대 예측**했다. 평균 오차가 커진 것에 더해, 예측이 한쪽 방향으로 치우쳤다는 점을 중요하게 보았다.
+
+![Batch 2의 실제값 대 예측값과 부호 있는 상대오차](outputs/modeling/group_split_20261002_132656_557254/final_test_20261002_140941_363275/error_analysis_20261002_143735_159129/test_error_analysis.png)
+
+왼쪽은 실제 수명과 예측 수명, 오른쪽은 부호를 포함한 상대오차다. 오른쪽의 양수는 과대 예측을 뜻한다. 당시 저장한 그림이며, [셀별 오류 CSV](outputs/modeling/group_split_20261002_132656_557254/final_test_20261002_140941_363275/error_analysis_20261002_143735_159129/cell_errors.csv)와 함께 볼 수 있다.
 
 | 실제 수명 구간 | 셀 수 | MAPE (%) | 과대 예측 셀 수 |
 |---|---:|---:|---:|

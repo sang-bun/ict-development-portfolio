@@ -161,7 +161,8 @@ const papers = [
 ]
 let paperSeq = 100
 
-const zotero = new Map([[3, { group_id: 5481123, last_synced_at: daysAgo(1) }]]) // team_id → 설정
+// 로컬 mock 전용 예시 식별자이며 실제 외부 그룹 연결이 아니다.
+const zotero = new Map([[3, { group_id: 1, last_synced_at: daysAgo(1) }]]) // team_id → 설정
 
 const teamPapers = (claims) => papers.filter((p) => p.team_id === claims.team_id)
 const inLibrary = (claims, arxivId) => teamPapers(claims).some((p) => p.arxiv_id === arxivId && p.status !== 'failed')
