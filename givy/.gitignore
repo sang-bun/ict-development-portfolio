@@ -1,0 +1,74 @@
+HELP.md
+.gradle
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+bin/
+!**/src/main/**/bin/
+!**/src/test/**/bin/
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+out/
+!**/src/main/**/out/
+!**/src/test/**/out/
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+### VS Code ###
+.vscode/
+
+# --- GIVY Project Custom ---
+
+# 1. 환경 변수 및 보안 파일
+.env
+.env.local
+.env.dev
+.env.prod
+kis_token.json
+application-prod.yml
+application-local.yml
+application-secrets.yml
+*-secrets.yml
+
+# 2. AWS 관련 보안 키 (서버 접속용 .pem 등)
+*.pem
+.aws/
+
+# 3. QueryDSL 빌드 파일 (생성된 코드이므로 공유 불필요)
+# build.gradle의 querydslDir 설정에 맞춤
+**/generated/
+
+# 4. OS 및 에디터 추가 설정
+.DS_Store
+Thumbs.db
+.history/
+
+# Firebase Admin SDK private key
+**/resources/firebase/*.json
+**/resources/firebase/*.json.*
+*.key
+*.p12
+*.pfx
+*.log
+logs/
+.env.*
+!.env.example

@@ -1,0 +1,44 @@
+# 제출용 공통 설정. 팀의 앱 식별자와 운영 서버 주소는 포함하지 않는다.
+spring:
+  application:
+    name: givy
+  profiles:
+    active: local
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+springdoc:
+  swagger-ui:
+    tags-sorter: alpha
+    operations-sorter: "((a, b) => a.get('operationId').localeCompare(b.get('operationId')))"
+
+oauth:
+  kakao:
+    client-id: ${KAKAO_CLIENT_ID}
+    authorize-uri: https://kauth.kakao.com/oauth/authorize
+    redirect-uri: ${KAKAO_REDIRECT_URI:http://localhost:8080/oauth/kakao/callback}
+    token-uri: https://kauth.kakao.com/oauth/token
+    user-info-uri: https://kapi.kakao.com/v2/user/me
+    client-secret: ${CLIENT_SECRET}
+  google:
+    client-id: ${GOOGLE_CLIENT_ID}
+    client-secret: ${GOOGLE_CLIENT_SECRET}
+    redirect-uri: ${GOOGLE_REDIRECT_URI:http://localhost:8080/oauth/google/callback}
+    token-uri: https://oauth2.googleapis.com/token
+    user-info-uri: https://www.googleapis.com/oauth2/v3/userinfo
+    authorize-uri: https://accounts.google.com/o/oauth2/v2/auth
+
+fcm:
+  file_path: ${FCM_FILE_PATH}
+  url: https://fcm.googleapis.com/v1/projects/${PROJECT_ID}/messages:send
+  google_api: https://www.googleapis.com/auth/cloud-platform
+  project_id: ${PROJECT_ID}
+
+kis:
+  api:
+    app-key: ${KIS_API_APP_KEY}
+    app-secret: ${KIS_API_APP_SECRET}
+    url: ${KIS_API_URL:https://openapi.koreainvestment.com:9443}

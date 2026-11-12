@@ -1,0 +1,31 @@
+# GitHub Secret APPLICATION_YML 참고용 (운영 EC2).
+# 실제 값(DB URL, 비밀번호, API 키)은 Secret에만 두고 이 파일은 커밋하지 마세요.
+
+spring:
+  config:
+    activate:
+      on-profile: prod
+
+  datasource:
+    url: jdbc:postgresql://YOUR_RDS_HOST:5432/fertility_db
+    username: YOUR_USER
+    password: YOUR_PASSWORD
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      # 1) 신규 배포·컬럼 추가: 잠시 update 로 재배포 후 스키마 반영 확인
+      # 2) 확인 후 validate 로 변경 (운영 권장, 데이터 보존)
+      ddl-auto: validate
+    show-sql: false
+
+# 배포 워크플로: prod 프로필 활성화는 빌드/실행 스크립트에서 -Dspring.profiles.active=prod 등으로 지정
+
+llm:
+  api-key: YOUR_ANTHROPIC_API_KEY
+  model: claude-sonnet-4-6
+  base-url: https://api.anthropic.com
+  connect-timeout-ms: 5000
+  read-timeout-ms: 90000
+  temperature: 0.7
+  max-tokens: 4096
